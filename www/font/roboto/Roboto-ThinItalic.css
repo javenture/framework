@@ -1,0 +1,13 @@
+@font-face
+{
+	font-family: 'Roboto';
+	font-style: italic;
+	font-weight: 100;
+
+	src:
+		local('Roboto Thin Italic'),
+		local('Roboto-ThinItalic'),
+		url(Roboto-ThinItalic.woff2) format('woff2'),
+		url(Roboto-ThinItalic.woff) format('woff'),
+		url(Roboto-ThinItalic.ttf) format('truetype');
+}

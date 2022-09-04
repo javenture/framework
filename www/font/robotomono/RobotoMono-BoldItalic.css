@@ -1,0 +1,13 @@
+@font-face
+{
+	font-family: 'Roboto Mono';
+	font-style: italic;
+	font-weight: 700;
+
+	src:
+		local('Roboto Mono Bold Italic'),
+		local('RobotoMono-BoldItalic'),
+		url(RobotoMono-BoldItalic.woff2) format('woff2'),
+		url(RobotoMono-BoldItalic.woff) format('woff'),
+		url(RobotoMono-BoldItalic.ttf) format('truetype');
+}

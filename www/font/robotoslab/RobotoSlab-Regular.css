@@ -1,0 +1,13 @@
+@font-face
+{
+	font-family: 'Roboto Slab';
+	font-style: normal;
+	font-weight: 400;
+
+	src:
+		local('Roboto Slab Regular'),
+		local('RobotoSlab-Regular'),
+		url(RobotoSlab-Regular.woff2) format('woff2'),
+		url(RobotoSlab-Regular.woff) format('woff'),
+		url(RobotoSlab-Regular.ttf) format('truetype');
+}

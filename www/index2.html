@@ -1,0 +1,1837 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<title>Агентство «День и ночь»</title>
+
+	<script src="/webcomponent/webcomponentsjs/webcomponents-lite.js"></script>
+
+	<link rel="import" href="/webcomponent/font-roboto/roboto.html">
+	<link rel="import" href="/webcomponent/paper-styles/color.html">
+	<link rel="import" href="/webcomponent/paper-styles/shadow.html">
+	<link rel="import" href="/webcomponent/paper-styles/typography.html">
+	<link rel="import" href="/webcomponent/paper-styles/default-theme.html">
+
+
+	<link rel="import" href="/webcomponent/iron-icons/iron-icons.html">
+	<link rel="import" href="/webcomponent/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="/webcomponent/iron-flex-layout/iron-flex-layout-classes.html">
+
+	<link rel="import" href="/webcomponent/paper-button/paper-button.html">
+	<link rel="import" href="/webcomponent/paper-card/paper-card.html">
+	<link rel="import" href="/webcomponent/paper-fab/paper-fab.html">
+	<link rel="import" href="/webcomponent/paper-input/paper-input.html">
+	<link rel="import" href="/webcomponent/paper-input/paper-textarea.html">
+	<link rel="import" href="/webcomponent/paper-item/paper-icon-item.html">
+	<link rel="import" href="/webcomponent/paper-icon-button/paper-icon-button.html">
+
+	<link rel="import" href="/webcomponent/app-layout/app-layout.html">
+	<link rel="import" href="/webcomponent/app-layout/app-scroll-effects/app-scroll-effects.html">
+
+<!--
+	<link rel="import" href="/webcomponent/app-layout/app-header/app-header.html">
+	<link rel="import" href="/webcomponent/app-layout/app-header-layout/app-header-layout.html">
+	<link rel="import" href="/webcomponent/app-layout/app-drawer/app-drawer.html">
+	<link rel="import" href="/webcomponent/app-layout/app-drawer-layout/app-drawer-layout.html">
+-->
+
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css"> <!-- ??? -->
+
+
+	<style is="custom-style">
+
+		/*
+			--paper-font-common-base:
+			{
+				font-family: "Roboto", "Noto", sans-serif;
+			  -webkit-font-smoothing: antialiased;
+			};
+
+			--paper-font-common-code:
+			{
+			  font-family: "Roboto Mono", "Consolas", "Menlo", monospace;
+			  -webkit-font-smoothing: antialiased;
+			};
+
+			--paper-font-common-expensive-kerning:
+			{
+			  text-rendering: optimizeLegibility;
+			};
+
+			--paper-font-common-nowrap:
+			{
+			  white-space: nowrap;
+			  overflow: hidden;
+			  text-overflow: ellipsis;
+			};
+
+
+			--paper-font-display4: {
+			  @apply(--paper-font-common-base);
+			  @apply(--paper-font-common-nowrap);
+
+			  font-size: 112px;
+			  font-weight: 300;
+			  letter-spacing: -.044em;
+			  line-height: 120px;
+			};
+
+			--paper-font-display3: {
+			  @apply(--paper-font-common-base);
+			  @apply(--paper-font-common-nowrap);
+
+			  font-size: 56px;
+			  font-weight: 400;
+			  letter-spacing: -.026em;
+			  line-height: 60px;
+			};
+
+			--paper-font-display2: {
+			  @apply(--paper-font-common-base);
+
+			  font-size: 45px;
+			  font-weight: 400;
+			  letter-spacing: -.018em;
+			  line-height: 48px;
+			};
+
+			--paper-font-display1: {
+			  @apply(--paper-font-common-base);
+
+			  font-size: 34px;
+			  font-weight: 400;
+			  letter-spacing: -.01em;
+			  line-height: 40px;
+			};
+
+			--paper-font-headline: {
+			  @apply(--paper-font-common-base);
+
+			  font-size: 24px;
+			  font-weight: 400;
+			  letter-spacing: -.012em;
+			  line-height: 32px;
+			};
+
+			--paper-font-title: {
+			  @apply(--paper-font-common-base);
+			  @apply(--paper-font-common-nowrap);
+
+			  font-size: 20px;
+			  font-weight: 500;
+			  line-height: 28px;
+			};
+
+			--paper-font-subhead: {
+			  @apply(--paper-font-common-base);
+
+			  font-size: 16px;
+			  font-weight: 400;
+			  line-height: 24px;
+			};
+
+			--paper-font-body2: {
+			  @apply(--paper-font-common-base);
+
+			  font-size: 14px;
+			  font-weight: 500;
+			  line-height: 24px;
+			};
+
+			--paper-font-body1: {
+			  @apply(--paper-font-common-base);
+
+			  font-size: 14px;
+			  font-weight: 400;
+			  line-height: 20px;
+			};
+
+			--paper-font-caption: {
+			  @apply(--paper-font-common-base);
+			  @apply(--paper-font-common-nowrap);
+
+			  font-size: 12px;
+			  font-weight: 400;
+			  letter-spacing: 0.011em;
+			  line-height: 20px;
+			};
+
+			--paper-font-menu: {
+			  @apply(--paper-font-common-base);
+			  @apply(--paper-font-common-nowrap);
+
+			  font-size: 13px;
+			  font-weight: 500;
+			  line-height: 24px;
+			};
+
+			--paper-font-button: {
+			  @apply(--paper-font-common-base);
+			  @apply(--paper-font-common-nowrap);
+
+			  font-size: 14px;
+			  font-weight: 500;
+			  letter-spacing: 0.018em;
+			  line-height: 24px;
+			  text-transform: uppercase;
+			};
+
+			--paper-font-code2: {
+			  @apply(--paper-font-common-code);
+
+			  font-size: 14px;
+			  font-weight: 700;
+			  line-height: 20px;
+			};
+
+			--paper-font-code1: {
+			  @apply(--paper-font-common-code);
+
+			  font-size: 14px;
+			  font-weight: 500;
+			  line-height: 20px;
+			};
+
+		*/
+
+
+		/* ??? */
+		/*
+			--primary-text-color: var(--paper-grey-900);
+			--primary-background-color: #ffffff;
+			--secondary-text-color: #737373;
+			--disabled-text-color: #9b9b9b;
+			--divider-color: #dbdbdb;
+			--primary-color: var(--paper-indigo-500);
+			--light-primary-color: var(--paper-indigo-100);
+			--dark-primary-color: var(--paper-indigo-700);
+			--accent-color: var(--paper-pink-a200);
+			--light-accent-color: var(--paper-pink-a100);
+			--dark-accent-color: var(--paper-pink-a400);
+
+			--drawer-menu-color: #ffffff;
+			--drawer-border-color: 1px solid #ccc;
+			--drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+
+			--paper-menu-background-color: #fff;
+			--menu-link-color: #111111;
+		*/
+
+
+
+
+
+
+		* /* ??? */
+		{
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		body
+		{
+			margin: 0;
+
+			/*background-color: var(--paper-grey-800);*/
+		}
+
+		div
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+			margin: 0;
+		}
+
+
+
+
+		/* --paper-font-headline */
+		h1
+		{
+			font-family: "Roboto Slab", "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			font-size: 24px;
+			font-weight: 400;
+			letter-spacing: -.012em;
+			line-height: 32px;
+
+			margin: 32px 0 20px 0;
+			text-rendering: optimizeLegibility;
+		}
+
+		@media only screen and (min-width: 721px)
+		{
+			/* --paper-font-display1 */
+			h1
+			{
+				font-family: "Roboto Slab", "Roboto", "Noto", sans-serif;
+				-webkit-font-smoothing: antialiased;
+
+				font-size: 34px;
+				font-weight: 400;
+				letter-spacing: -.01em;
+				line-height: 40px;
+
+				margin: 40px 0 20px 0;
+				text-rendering: optimizeLegibility;
+			}
+		}
+
+		/* --paper-font-headline */
+		h2
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			font-size: 24px;
+			font-weight: 400;
+			letter-spacing: -.012em;
+			line-height: 32px;
+
+			margin: 0 0 20px 0;
+			text-rendering: optimizeLegibility;
+		}
+
+		/* --paper-font-title */
+		h3
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 28px;
+
+			/* XXX: ?
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			*/
+
+			margin: 0 0 20px 0;
+			text-rendering: optimizeLegibility;
+		}
+
+		/* --paper-font-subhead */
+		h4
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			font-size: 16px; /* Regular 16sp (device), 15sp (desktop) ? */
+			font-weight: 400;
+			line-height: 24px;
+
+			margin: 0 0 20px 0;
+			text-rendering: optimizeLegibility;
+		}
+
+		/* --paper-font-body2 */
+		h5
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			font-size: 14px; /* Regular 14sp (device), 13sp (desktop) ? */
+			font-weight: 500;
+			line-height: 24px;
+
+			margin: 0 0 20px 0;
+			text-rendering: optimizeLegibility;
+		}
+
+		h6
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			font-size: 14px; /* Regular 14sp (device), 13sp (desktop) ? */
+			font-weight: 500;
+			line-height: 20px;
+
+			margin: 0 0 20px 0;
+			text-rendering: optimizeLegibility;
+		}
+
+		p
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			font-size: 14px; /* Regular 14sp (device), 13sp (desktop) ? */
+			font-weight: 400;
+			line-height: 20px;
+
+			margin: 0 0 20px 0;
+			max-width: 480px; /* XXX: ? */
+		}
+
+		ul, ol
+		{
+			margin: 0 0 20px 0;
+			padding: 0 0 0 20px;
+			max-width: 480px; /* XXX: ? */
+		}
+
+		li
+		{
+			font-family: "Roboto", "Noto", sans-serif;
+			-webkit-font-smoothing: antialiased;
+
+			display: list-item;
+
+			font-size: 14px; /* Regular 14sp (device), 13sp (desktop) ? */
+			font-weight: 400;
+			line-height: 20px;
+
+		}
+
+
+		a
+		{
+			text-decoration: none;
+			text-rendering: optimizeLegibility;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		app-header
+		{
+			height: 240px;
+			color: #fff; /* ? */
+			background-color: var(--paper-blue-grey-900); /* inline */
+
+			--app-header-background-front-layer: /* inline */
+			{
+				background-size: 160px 160px, 432px 240px, 970px 240px;
+				background-repeat: no-repeat, no-repeat, no-repeat;
+				background-image: url(logo.rus.jpg), url(mask2.png), url(collage.png);
+				background-position: 72px 24px, left top, 400px 0;
+			};
+		}
+
+
+
+
+
+
+
+		app-drawer
+		{
+			--app-drawer-width: 270px;
+
+			--app-drawer-content-container:
+			{
+				color: white; /* ? */
+				background-color: var(--paper-grey-700); /* ? */
+			};
+		}
+
+		div.drawer-contents
+		{
+			height: 100%;
+			overflow: auto;
+		}
+
+
+		app-toolbar.tall
+		{
+			height: 176px;
+		}
+
+
+
+		div[main-title]
+		{
+			font-weight: 100;
+			margin-top: 112px;
+			margin-left: 56px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		@media (min-width: 360px)
+		{
+			div[main-title]
+			{
+				font-weight: 500;
+			}
+		}
+
+
+		div[condensed-title]
+		{
+			font-weight: 100;
+			margin-left: 16px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		@media (min-width: 360px)
+		{
+			div[condensed-title]
+			{
+				font-weight: 500;
+			}
+		}
+
+
+
+
+		paper-icon-button
+		{
+			--paper-icon-button-ink-color: white;
+		}
+
+/*
+		paper-icon-button + [title]                       !* ! *!
+		{
+			margin-left: 24px;
+		}
+*/
+
+
+		paper-fab
+		{
+/*
+			--paper-fab-background: var(--paper-amber-a700);
+			--paper-fab-keyboard-focus-background: var(--paper-amber-a400);
+*/
+
+			position: fixed;
+			right: 32px;
+			bottom: 32px;
+			will-change: transform;
+			transition: 0.1s -webkit-transform;
+			transition: 0.1s transform;
+
+			@apply(--shadow-elevation-16dp); /* 8? */
+		}
+
+		paper-fab:hover
+		{
+		}
+
+
+
+		/*
+				paper-fab.shrink-to-hidden
+				{
+					-webkit-transform: scale3d(0, 0, 0);
+					transform: scale3d(0, 0, 0);
+				}
+		*/
+
+
+/*
+		@media (max-width: 639px)
+		{
+			[title]
+			{
+				margin-left: 50px;
+				font-size: 30px;
+			}
+
+			[condensed-title]
+			{
+				font-size: 14px;
+			}
+		}
+*/
+
+
+		paper-card
+		{
+			background-color: var(--paper-grey-700);
+		}
+
+		paper-card:hover
+		{
+			@apply(--shadow-elevation-8dp);
+		}
+
+
+
+		div.content
+		{
+			width: 60ex; /* XXX: px = ? (Optimal Line Length = ~60 characters) */
+		}
+
+
+
+		div.apartments
+		{
+			margin: 4px;
+
+			display: flex;
+			flex-flow: column nowrap;
+		}
+
+		@media only screen and (min-width: 961px)
+		{
+			div.apartments
+			{
+				flex-flow: row wrap;
+				justify-content: center;
+				align-items: flex-start;
+				align-content: flex-start;
+
+/*
+				width: 640px;
+				margin-left: auto;
+				margin-right: auto;
+*/
+			}
+		}
+
+
+
+		paper-card.apartment_card
+		{
+			/*width: 100%;*/
+
+			margin: 4px;
+
+			/*
+						margin-left: auto;
+						margin-right: auto;
+			*/
+		}
+
+		@media only screen and (min-width : 361px)
+		{
+			paper-card.apartment_card
+			{
+/*
+				width: 100%;
+*/
+			}
+		}
+
+		@media only screen and (min-width : 401px)
+		{
+			paper-card.apartment_card
+			{
+/*
+				width: 100%;
+*/
+			}
+		}
+
+		@media only screen and (min-width: 481px)
+		{
+			paper-card.apartment_card
+			{
+/*
+				width: 100%;
+*/
+				padding: 16px;
+			}
+		}
+
+		@media only screen and (min-width: 961px)
+		{
+			paper-card.apartment_card
+			{
+				flex: 1 1 auto;
+
+				padding: 0;
+			}
+
+		}
+
+
+
+
+
+
+		div.apartment_card-header
+		{
+			@apply(--paper-font-headline);
+		}
+
+		li.apartment_card-detail
+		{
+			color: rgba(255, 255, 255, var(--light-secondary-opacity)); /* ? */
+
+		}
+
+		div.apartment_card-price
+		{
+			@apply(--paper-font-headline);
+		}
+
+
+
+
+
+		div.apartment_card-image
+		{
+			background-size: auto;
+			background: no-repeat center;
+		}
+
+		@media only screen and (min-width : 361px)
+		{
+			div.apartment_card-image
+			{
+				width: 100%;
+				height: 200px;
+				border-top-left-radius: 2px;
+				border-top-right-radius: 2px;
+			}
+		}
+
+		@media only screen and (min-width : 401px)
+		{
+			div.apartment_card-image
+			{
+				width: 100%;
+				height: 200px;
+			}
+		}
+
+		@media only screen and (min-width: 481px)
+		{
+			div.apartment_card-image
+			{
+				width: 160px;
+				height: 160px;
+				float: right;
+			}
+		}
+
+
+
+		div.apartment_card-content
+		{
+			margin-top: 8px;
+		}
+
+		@media only screen and (min-width: 481px)
+		{
+			div.apartment_card-content
+			{
+				position:relative;
+			}
+		}
+
+
+
+
+
+
+
+
+
+		paper-icon-item
+		{
+			--paper-item-icon-width: /* ? */
+			{
+				margin-left: 16px;
+			}
+
+		}
+
+
+	</style>
+
+
+
+	<!-- color -->
+
+	<!-- Material Design Light background theme -->
+	<style is="custom-style">
+
+		/* !!!
+			- primary & secondary & ternary (?)
+			- accent
+
+            primary text: rgba(0, 0, 0, 0.87);
+            secondary text: rgba(0, 0, 0, 0.54);
+			disabled/hint text: rgba(0, 0, 0, 0.38);
+            divider: rgba(0, 0, 0, 0.12);
+            active icon: rgba(0, 0, 0, 0.54);
+			inactive icon: rgba(0, 0, 0, 0.38); | 0.26 ?
+
+			status bar: #E0E0E0 (min: Grey300!)
+			app bar: #F5F5F5 (min: Grey100!)
+			background: #FAFAFA (Grey50!)
+			cards/dialog: white (!)
+		*/
+
+
+
+		:root
+		{
+			--primary-text-color: var(--light-theme-text-color);
+			--primary-background-color: var(--light-theme-background-color);
+			--secondary-text-color: var(--light-theme-secondary-color);
+			--disabled-text-color: var(--light-theme-disabled-color);
+			--divider-color: var(--light-theme-divider-color);
+
+			--error-color: var(--paper-deep-orange-a700);
+
+			--primary-color: var(--paper-indigo-500);
+			--light-primary-color: var(--paper-indigo-100);
+			--dark-primary-color: var(--paper-indigo-700);
+
+			--accent-color: var(--paper-purple-a700);
+			--light-accent-color: var(--paper-teal-a100);
+			--dark-accent-color: var(--paper-teal-a400);
+
+
+			--drawer-menu-color: #ffffff;
+			--drawer-border-color: 1px solid #ccc;
+			--drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+
+			--paper-menu-background-color: #fff;
+			--menu-link-color: #111111;
+
+
+			/*
+			--paper-button-flat-keyboard-focus:
+			{
+				background-color: var(--paper-amber-a100);
+			};
+
+			--paper-button-raised-keyboard-focus:
+			{
+				background-color: var(--paper-amber-a100);
+			};
+			*/
+		}
+
+
+/*
+*/
+
+
+
+		paper-button
+		{
+			color: var(--accent-color);
+
+/*
+			--paper-button-ink-color: var(--paper-pink-a200);
+
+			--paper-button-flat-keyboard-focus:
+			{
+				background-color: var(--paper-pink-a200);
+				color: white !important;
+			};
+
+			--paper-button-raised-keyboard-focus:
+			{
+				background-color: var(--paper-pink-a200) !important;
+				color: white !important;
+			};
+*/
+		}
+
+		paper-button[raised]
+		{
+			color: white;
+			background-color: var(--accent-color);
+
+		}
+
+
+
+
+
+		body
+		{
+			background-color: var(--paper-grey-50);
+
+			/*color: #212121;*/
+		}
+
+		h1
+		{
+			color: rgba(63, 81, 181, var(--dark-primary-opacity)); /* var(--primary-color); */ /* rgba(0, 0, 0, var(--dark-secondary-opacity)); */
+		}
+
+		h2
+		{
+			color: rgba(0, 0, 0, var(--dark-primary-opacity));
+		}
+
+		h3
+		{
+			color: rgba(0, 0, 0, var(--dark-primary-opacity));
+		}
+
+		h4
+		{
+			color: rgba(0, 0, 0, var(--dark-primary-opacity));
+		}
+
+		h5
+		{
+			color: rgba(0, 0, 0, var(--dark-primary-opacity));
+		}
+
+		h6
+		{
+			color: rgba(0, 0, 0, var(--dark-primary-opacity));
+		}
+
+
+
+		p
+		{
+			color: var(--primary-text-color);
+
+		}
+
+		a
+		{
+			color: var(--accent-color);
+		}
+
+		/*
+		a:hover
+		{
+			border-bottom: 1px solid var(--accent-color);
+		}
+
+		a[pseudo]:hover
+		{
+			border-bottom: 1px dashed var(--accent-color);
+		}
+		*/
+
+		strong
+		{
+			font-weight: inherit;
+
+			color: var(--light-theme-base-color);
+		}
+
+
+	</style>
+
+
+	<!-- Material Design Dark background theme -->
+	<!--
+	<style is="custom-style">
+
+		/* !!!
+            primary text: rgba(255, 255, 255, 1);
+            secondary text: rgba(255, 255, 255, 0.70);
+			disabled/hint text: rgba(255, 255, 255, 0.50);
+            divider: rgba(255, 255, 255, 0.12);
+            active icon: rgba(255, 255, 255, 1);
+			inactive icon: rgba(255, 255, 255, 0.50); | 0.30 ?
+
+			status bar: black (max: !)
+			app bar: #212121 (max: Grey900!)
+			background: #303030 (!)
+			cards/dialog: #424242 (Grey800!)
+		*/
+
+		:root
+		{
+			--primary-text-color: var(--dark-theme-text-color);
+			--primary-background-color: var(--dark-theme-background-color);
+			--secondary-text-color: var(--dark-theme-secondary-color);
+			--disabled-text-color: var(--dark-theme-disabled-color);
+			--divider-color: var(--dark-theme-divider-color);
+		}
+
+
+	</style>
+	-->
+
+
+</head>
+
+<body unresolved>
+
+
+
+
+<app-drawer-layout responsive-width="959px"> <!-- ??? -->
+
+	<app-drawer swipe-open>
+
+		<div class="drawer-contents">
+
+<!--
+			<app-toolbar>«День и ночь»</app-toolbar>
+-->
+
+			<paper-icon-item>
+				<iron-icon icon="search" item-icon></iron-icon>
+				<span>Выбор квартиры</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<iron-icon icon="send" item-icon></iron-icon>
+				<span>Условия аренды</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<iron-icon icon="send" item-icon></iron-icon>
+				<span>Платежные реквизиты</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<iron-icon icon="send" item-icon></iron-icon>
+				<span>Отзывы клиентов</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<iron-icon icon="send" item-icon></iron-icon>
+				<span>Контактная информация</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span></span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<iron-icon icon="home" item-icon></iron-icon>
+				<span>Квартиры агентства</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<b>1 комната, «Бизнес»</b>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-4</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-5</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-10</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-11</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-16</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-20</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-20</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Б-27</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<b>1 комната, «Люкс»</b>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Л-6</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>1-Л-26</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<b>2 комнаты, «Бизнес»</b>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Б-1</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Б-14</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<b>2 комнаты, «Люкс»</b>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Л-2</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Л-3</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Л-17</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Л-24</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Л-28</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>2-Л-29</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<b>3 комнаты, «Люкс»</b>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>3-Л-15</span>
+			</paper-icon-item>
+
+			<paper-icon-item>
+				<span>3-Л-25</span>
+			</paper-icon-item>
+
+		</div>
+	</app-drawer>
+
+
+
+
+
+	<app-header-layout>
+
+		<app-header condenses reveals effects="waterfall resize-title blend-background ">
+
+			<app-toolbar>
+				<paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+				<div condensed-title>Агентство «День и ночь»</div>
+			</app-toolbar>
+
+			<app-toolbar class="tall">
+				<div main-title>Агентство «День и ночь»</div>
+			</app-toolbar>
+
+		</app-header>
+
+
+
+<!--
+		<div class="apartments">
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/59df0610.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><iron-icon icon="home"></iron-icon>1-Б-27</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">2 спальных места</li>
+							<li class="apartment_card-detail">ул. Гагарина 7а</li>
+						</ul>
+
+						<div class="apartment_card-price"><iron-icon icon="event"></iron-icon>430 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/cb0284a9.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Л-26</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 26/14</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>600 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/875ac7c8.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Б-5</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">4 спальных места (2+2)</li>
+							<li class="apartment_card-detail">ул. Ленина 2</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>600 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/7819eabc.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Б-16</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 26/14</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>600 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/69d02172.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Л-6</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Ленина 12</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>650 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/de366eb2.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Б-10</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">2 спальных места</li>
+							<li class="apartment_card-detail">ул. Пушкина 66а</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>400 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/7e91b8b1.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Б-11</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">4 спальных места (2+2)</li>
+							<li class="apartment_card-detail">ул. Фрунзе 20</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>400 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/b0725432.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Б-20</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">2 спальных места</li>
+							<li class="apartment_card-detail">ул. Октябрьская 59a</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>450 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/61254426.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Б-21</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">4 спальных места (2+2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 26/14</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>450 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/dd61293c.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>1-Б-4</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">1 комната</li>
+							<li class="apartment_card-detail">3 спальных места (2+1)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 50</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>500 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/f47556c6.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Л-29</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Комсомольская 30</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>1250 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/a449934e.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Л-28</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 25б</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>750 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/f50fabb4.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Л-24</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 25б</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>750 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/673b0612.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Б-1</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Ленина 2</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>650 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/9f4e88af.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Б-14</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Бизнес»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 44</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>650 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/6412b571.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Л-2</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Фрунзе 29/45</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>780 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/698a156d.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Л-3</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">4 спальных места (2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 22</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>800 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/ca4a6f77.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>2-Л-17</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">2 комнаты</li>
+							<li class="apartment_card-detail">5 спальных мест (2+1/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 61а</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>1250 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/d6396589.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>3-Л-25</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">3 комнаты</li>
+							<li class="apartment_card-detail">6 спальных мест (2/2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 61а</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>1000 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+
+			<a href="#">
+				<paper-card class="apartment_card">
+					<div class="apartment_card-image" style="background-image: url(image/d9d4aeb5.jpg)"></div>
+
+					<div class="apartment_card-content">
+						<div class="apartment_card-header"><paper-icon-button icon="home"></paper-icon-button>3-Л-15</div>
+
+						<ul>
+							<li class="apartment_card-detail">«Люкс»</li>
+							<li class="apartment_card-detail">3 комнаты</li>
+							<li class="apartment_card-detail">8 спальных мест (2+2/2/2)</li>
+							<li class="apartment_card-detail">ул. Октябрьская 27</li>
+						</ul>
+
+						<div class="apartment_card-price"><paper-icon-button icon="event"></paper-icon-button>950 &#8372;</div>
+					</div>
+				</paper-card>
+			</a>
+		</div>
+-->
+
+		<div class="content">
+
+			<h1>Агентство «День и ночь» — аренда квартиры в Полтаве посуточно</h1>
+
+
+
+
+
+
+			<h3>Buttons can be flat, raised, toggleable, or disabled</h3>
+
+			<paper-button>link</paper-button>
+			<paper-button raised>raised</paper-button>
+			<paper-button toggles raised>Сохранить</paper-button>
+			<paper-button disabled>disabled</paper-button>
+
+			<h3>Buttons can have icons &#8372;</h3>
+
+			<paper-button><iron-icon icon="check" title="111"></iron-icon>&nbsp;link</paper-button>
+			<paper-button raised><iron-icon icon=""></iron-icon>&#8372; raised</paper-button>
+			<paper-button toggles raised active><iron-icon icon="favorite"></iron-icon>&nbsp;<span>toggles</span></paper-button>
+			<paper-button disabled><iron-icon icon="block"></iron-icon>disabled</paper-button>
+
+			<h3>Inputs can have different types, and be disabled</h3>
+
+			<paper-input label="text input"></paper-input>
+			<paper-textarea label="autoresizing textarea input"></paper-textarea>
+			<paper-input label="password input" type="password"></paper-input>
+			<paper-input label="disabled input" disabled></paper-input>
+
+			<h3>The label can have different floating states</h3>
+
+			<paper-input label="this label floats after typing"></paper-input>
+			<paper-input label="this label is always floating" always-float-label></paper-input>
+			<paper-input label="this label never floats" no-label-float></paper-input>
+			<paper-input label="this label is always floating" always-float-label placeholder="placeholder text"></paper-input>
+
+
+
+
+
+
+			<p>
+				Предлагаем вам услуги по аренде квартиры посуточно в Полтаве.
+			</p>
+
+			<p>
+				Агентство <a href="#">«День и ночь»</a> успешно работает на рынке недвижимости с 2005 года.
+				У нас вы можете взять в аренду квартиру в Полтаве без посредников по оптимальной цене.
+				Мы предлагаем 1-, 2- и 3-х комнатные апартаменты в центре города со всеми удобствами стоимостью от <strong>250</strong> до <strong>1100</strong> гривен за сутки.
+			</p>
+
+			<p>
+				<a pseudo href="#">«День и ночь»</a> – единственное агентство в городе, предлагающее такое количество и разнообразие квартир для аренды в Полтаве посуточно без посредников.
+				Мы принимаем оплату за услуги в наличной и безналичной форме, а также предоставляем все необходимые отчетные документы для командировочных и юридических лиц.
+			</p>
+
+			<h2>Аренда квартир в Полтаве посуточно – максимальный комфорт за минимальную цену!</h2>
+
+			<p>
+				Полтава – город с богатым историческим прошлым и ярким настоящим.
+				Многочисленные культурные памятки, места боевой славы, музеи и памятники щедро разбавлены современными новостройками, торговыми центрами и подземными переходами.
+				Чистые, уютные и спокойные улочки города так и манят туристов со всех уголков страны, а также гостей из ближнего и дальнего зарубежья.
+			</p>
+
+			<p>
+				В Полтаву нужно приезжать, как минимум на выходные.
+				А в идеале – дня на 3-4. В связи с этим возникает вопрос: «<em>А ночевать где?</em>».
+				Уютное и комфортное жилье – залог хорошего настроения, приятного времяпровождения для туристов и плодотворной работы во время деловых визитов.
+				Разумеется, в городе есть гостиницы, но обойдутся они недешево, да и неудобно это – живешь, как в общежитии, не чувствуешь себя хозяином.
+				Альтернативный вариант – снять квартиру в Полтаве посуточно.
+			</p>
+
+			<p>
+				Давайте рассмотрим преимущества посуточной аренды:
+			</p>
+
+			<ul>
+				<li>
+					<em>Экономия денег</em>.
+					Снять квартиру в Полтаве на сутки можно от 250 гривен.
+					Вполне приличные апартаменты недалеко от центра.
+					Тогда как аренда гостиничного номера будет стоить не менее 400 гривен.
+					Разумеется, можно найти и дешевле, если вас устроят удобства на этаже или не самая новая мебель в номерах;
+				</li>
+
+				<li>
+					<em>Удобство</em>.
+					В квартире чувствуешь себя намного комфортнее, чем в гостинице.
+					Домашняя обстановка создает дополнительный уют.
+					В съемное жилье никто не зайдет в ваше отсутствие, а ключи от гостиничных номеров есть у всех уборщиц, которые имеют полное право беспрепятственно входить в помещение.
+					Не совсем приятно, правда?
+				</li>
+
+				<li>
+					<em>Большой выбор</em>.
+					Гостиницы, расположенные в центре города, достаточно дорогие.
+					Отели же с более приемлемыми расценками располагаются на значительном расстоянии от основных улиц.
+					Соответственно, вы привязываетесь к их месторасположению.
+					А снять квартиру в Полтаве по доступной цене вы можете в самых разных местах центральной части города.
+					Это особенно удобно для командировочных, которые предпочитают арендовать жилье поближе к месту планируемых встреч;
+				</li>
+
+				<li>
+					<em>Наличие любой бытовой техники</em>.
+					Кондиционер, холодильник, телевизор, стиральная машинка, утюг, фен, доступ к Интернету – весь этот набор вы гарантированно получите при аренде квартир в Полтаве.
+					Гостиничный же номер с таким «фаршем» потянет на категорию «люкс» и стоить будет соответственно;
+				</li>
+
+				<li>
+					<em>Вместе – дешевле</em>.
+					В гостинице вы платите за количество спальных мест – никто не разрешит заселять в одноместный номер семью из 4 человек, а посуточная аренда квартир в Полтаве количество жильцов не ограничивает.
+					Вы вполне можете найти однокомнатные апартаменты с 4 спальными местами;
+				</li>
+
+				<li>
+					<em>Большая площадь</em>.
+					Гостиничные номера, в большинстве своем, не могут похвастаться большими размерами.
+					А нехватка свободного пространства негативно сказывается на общем впечатлении от проживания.
+					Снимая в Полтаве квартиры посуточно, вы получаете в свое распоряжение гораздо более просторные помещения, в которых есть где развернуться и найдется место всем вашим вещам и покупкам.
+				</li>
+			</ul>
+
+
+			<h2>Где снять жилье в Полтаве посуточно?</h2>
+
+			<p>
+				Итак, решено! Вы собираетесь в наш город с визитом и вам нужна квартира посуточно.
+				Полтава славится своим гостеприимством, так что вопрос аренды жилья трудностей не вызовет.
+			</p>
+
+			<p>
+				Но во избежание форс-мажорных ситуаций рекомендуем вам заблаговременно подыскать жилье. Сделать это можно через вездесущий Интернет, забронировав квартиру на сайте агентства недвижимости.
+			</p>
+
+			<p>
+				Зайдите на любой поисковый сервис (<em>Яндекс</em>, <em>Гугл</em>, <em>Рамблер</em>) и введите запрос вроде «<em>сниму квартиру в Полтаве посуточно</em>» или «<em>аренда квартиры Полтава на сутки</em>».
+				Поисковик выдаст вам адреса сайтов риэлторских контор с описаниями, ценами и фотографиями квартирных номеров.
+				Там же вы найдете контактные данные владельцев жилья, которые ответят на любые вопросы.
+				Забронировать апартаменты можно либо прямо на  сайте, либо связавшись с владельцем.
+			</p>
+
+			<p>
+				Заказывая в Полтаве аренду квартир посуточно, вы рискуете нарваться на посредников или на «виртуальные агентства», которых на рынке украинской недвижимости развелось немало.
+				Поэтому, просматривая результаты поисковой выдачи по запросам на подобие «<em>квартиры посуточно Полтава</em>», обратите внимание на наличие качественных фотографий и подробных описаний жилья на сайтах, а также на особенности предоставления услуг и гарантии.
+				Не стесняйтесь требовать у арендодателей сертификаты, лицензии и разрешения, подтверждающие легальность предоставляемых ими услуг.
+			</p>
+
+
+			<h2>Какие у нас квартиры?</h2>
+
+			<img src="3.jpg" class="text" width="400" height="300">
+
+			<p>
+				В агентстве «День и ночь» представлены квартирные номера класса «Стандарт», «Бизнес» и «Люкс».
+				«Стандарт» - это разумный компромисс между ценой и удобствами.
+				Апартаменты классов «Бизнес» и «Люкс» - дополнительные удобства и комфорт, выполнены в эксклюзивном авторском дизайне с использованием качественных материалов, элементов декора и мебели.
+			</p>
+
+			<p>
+				Независимо от класса, квартиры снабжены всем необходимым для комфортного отдыха (современный ремонт, удобная мебель, электроника и бытовая техника).
+			</p>
+
+			<p>
+				Сняв квартиру посуточно в Полтаве в агентстве «День и ночь», вы получите жилье со всеми удобствами, в том числе ортопедическими матрасами на кроватях, очень качественными комплектами постельного белья и полотенец.
+				Также предусмотрены наборы посуды и столовых приборов.
+			</p>
+
+			<p>
+				У нас интересы клиента ставятся превыше всего, мы всегда идем навстречу вашим пожеланиям и оказываем услуги, недоступные в гостиницах.
+			</p>
+
+			<p>
+				В нашем агентстве вы можете взять в аренду квартиры в Полтаве не только для проживания, но и для проведения различных торжественных мероприятий: свадеб, дней рождений, корпоративных вечеринок или деловых встреч.
+			</p>
+
+			<p>
+				В гостинице аналогичные условия и сервис обойдутся вам на порядок дороже, чем аренда квартиры в Полтаве посуточно в агентстве «День и ночь».
+			</p>
+
+
+			<h2>Почему именно мы?</h2>
+
+			<img src="4.jpg" class="text" width="400" height="300">
+
+			<p>
+				Агентство «День и ночь» предлагает своим клиентам следующие преимущества:
+			</p>
+
+			<ul>
+				<li>
+					<em>Доступные цены</em>.
+					В нашем агентстве вы можете арендовать квартиру в Полтаве посуточно от 250 гривен.
+					Причем за эту сумму вы получите не «бабушкину квартиру» где-нибудь на окраине, а современное жилье со всеми удобствами;
+				</li>
+
+				<li>
+					<em>Выгодное расположение</em>.
+					Все апартаменты находятся в непосредственной близости от центра города, рядом с основными улицами;
+				</li>
+
+				<li>
+					<em>Все удобства</em>.
+					Кондиционер, холодильник, микроволновая печь, фен, утюг, стиральная машинка, кабельное или спутниковое телевидение, высокоскоростной интернет, водонагреватель, автономное отопление, джакузи и даже сауна – все эти удобства, в зависимости от своих пожеланий, клиенты могут получить, сняв в Полтаве квартиру посуточно в агентстве «День и ночь»;
+				</li>
+
+				<li>
+					<em>Конфиденциальность</em>.
+					Мы уважаем личную жизнь своих клиентов, и о том, что вы брали в аренду квартиру в Полтаве посуточно в агентстве «День и ночь», не узнает ни одна живая душа!
+				</li>
+
+				<li>
+					<em>Большой выбор</em>.
+					В агентстве «День и ночь» вы можете снять квартиры в Полтаве посуточно без посредников на любой вкус и кошелек: от бюджетных вариантов до эксклюзивных апартаментов;
+				</li>
+
+				<li>
+					<em>Быстрое поселение</em>.
+					Никакой бюрократической волокиты, буквально несколько минут – и мы вручаем вам ключи от номера;
+				</li>
+
+				<li>
+					<em>Специализированная прачечная</em>.
+					Все постельное белье и полотенца проходят обязательную стирку и глажку перед каждым использованием.
+					Для этого у агентства есть отдельная прачечная с профессиональным оборудованием: стиральной машиной, сушилкой и системой термообработки;
+				</li>
+
+				<li>
+					<em>Все необходимые документы</em>.
+					Все квартиры для посуточной аренды в Полтаве реальны.
+					Мы располагаем официальными документами, которые подтверждают право самостоятельного управления квартирами, ознакомиться с которыми вы можете прямо на сайте.
+					Кроме того, на сайте представлены профессиональные фотографии квартирных номеров и виртуальные туры по ним, что подтверждает высокий уровень агентства и выделяет его среди других подобных предприятий.
+				</li>
+			</ul>
+
+			<p>
+				Аренда квартир в Полтаве – это быстро и просто!
+				Обратившись в агентство недвижимости «День и ночь», вы сможете убедиться в этом на собственном примере.
+			</p>
+
+			<p>
+				Вы достойны комфортной жизни! Мы предоставим квартиру, в которой вы почувствуете себя, как дома.
+			</p>
+
+			<p>
+				<strong>Агентство «День и ночь» ждет вас в любое время дня и ночи!</strong>
+			</p>
+
+		</div>
+
+
+	</app-header-layout>
+
+
+	<paper-fab icon="create" title="Заявка на бронирование"></paper-fab>
+
+</app-drawer-layout>
+
+
+
+
+
+
+
+<script>
+
+	var fab = document.querySelector('paper-fab');
+	var header = document.querySelector('app-header');
+
+	window.addEventListener
+	(
+		'scroll',
+		function()
+		{
+			var progress = header.getScrollState().progress;
+			fab.toggleClass('shrink-to-hidden', progress > 0.5);
+		}
+	);
+
+</script>
+
+
+</body>
+</html>
